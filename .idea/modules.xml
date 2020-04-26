@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Backtracking.iml" filepath="$PROJECT_DIR$/.idea/Backtracking.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Dynamic-Programming/.idea/Dynamic-Programming.iml" filepath="$PROJECT_DIR$/../Dynamic-Programming/.idea/Dynamic-Programming.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ProblemSolving/.idea/ProblemSolving.iml" filepath="$PROJECT_DIR$/../ProblemSolving/.idea/ProblemSolving.iml" />
     </modules>
   </component>
 </project>
