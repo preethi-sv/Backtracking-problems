@@ -1,3 +1,5 @@
+# Problem: Print all permutations of string with unique characters
+
 def permute(string, start, end):
     if start == end:
         print(''.join(string))

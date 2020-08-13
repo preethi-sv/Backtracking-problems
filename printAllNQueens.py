@@ -1,18 +1,17 @@
-def printSolution(board):
-    solution = [0 for i in range(N)]
+def printSolution(board, N):
+    solution = [0 for _ in range(N)]
     for col in range(N):
         for row in range(N):
             if board[row][col] == 1:
                 solution[col] = str(row + 1)
-    strSol = '[' + ' '.join(solution) + ']'
-    print(strSol, end=' ')
+    print('[' + ', '.join(solution) + ']')
     # for i in range(N):
     #     for j in range(N):
     #         print(board[i][j], end=" ")
     #     print()
 
 
-def isSafe(board, row, col):
+def isSafe(board, row, col, N):
     for i in range(col):
         if board[row][i] == 1:
             return False
@@ -27,27 +26,25 @@ def isSafe(board, row, col):
     return True
 
 
-def nQueens(board, col):
+def nQueens(board, col, N):
     if col == N:
-        printSolution(board)
+        printSolution(board, N)
         return True
 
     result = False
     for row in range(N):
-        if isSafe(board, row, col):
+        if isSafe(board, row, col, N):
             board[row][col] = 1
-            result = nQueens(board, col + 1) or result
+            result = nQueens(board, col + 1, N) or result
             board[row][col] = 0
 
     return result
 
 
 if __name__ == "__main__":
-    t = int(input())
-    for _ in range(t):
-        N = int(input())
-        board = [[0 for _ in range(N)] for _ in range(N)]
-        if not nQueens(board, 0):
-            print('-1')
-        else:
-            print()
+    n = 5
+    chessboard = [[0 for _ in range(n)] for _ in range(n)]
+    if not nQueens(chessboard, 0, n):
+        print('No solution')
+    else:
+        print()

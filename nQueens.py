@@ -1,13 +1,21 @@
-N = 4
+# Problem: Check if N Queens can be placed safely in a board
+# Print solution if exists 
 
-def printSolution(board):
+# Function to print the board with N Queens
+def printSolution(board, N):
     for i in range(N):
         for j in range(N):
-            print(board[i][j], end=" ")
+            if board[i][j] == 1:
+                print('Q' + str(i+1), end='\t')
+            else:
+                print('.', end='\t')
         print()
+    # Solution as n-tuple
+    print(', '.join([str(j+1) for i in range(N) for j in range(N) if board[i][j]]))
 
 
-def isSafe(board, row, col):
+# Function to check if placing queen at board[row][col] is safe
+def isSafe(board, row, col, N):
     # Check this row on left side
     for i in range(col):
         if board[row][i] == 1:
@@ -26,27 +34,22 @@ def isSafe(board, row, col):
     return True
 
 
-def solveNQueens(board, col):
-    # base case: If all queens are placed 
-    # then return true 
+# Function to solve N Queens problem
+def solveNQueens(board, col, N):
+    # base case: If all queens are placed then return true 
     if col == N:
         return True
 
     # Consider this column and try placing 
     # this queen in all rows one by one 
     for i in range(N):
-
-        if isSafe(board, i, col):
-
+        if isSafe(board, i, col, N):
             # Place this queen in board[i][col] 
             board[i][col] = 1
-
             # recur to place rest of the queens
-            if solveNQueens(board, col + 1):
+            if solveNQueens(board, col + 1, N):
                 return True
-
-            # If placing queen in board[i][col 
-            # doesn't lead to a solution, then 
+            # If placing queen in board[i][col] doesn't lead to a solution, then 
             # queen from board[i][col] 
             board[i][col] = 0
 
@@ -56,10 +59,10 @@ def solveNQueens(board, col):
 
 
 if __name__ == "__main__":
-
-    board = [[0 for i in range(N)] for j in range(N)]
-    if solveNQueens(board, 0):
-        printSolution(board)
+    n = 4
+    chessboard = [[0 for i in range(n)] for j in range(n)]
+    # If solution exists
+    if solveNQueens(chessboard, 0, n):
+        printSolution(chessboard, n)
     else:
         print("Solution does not exist")
-

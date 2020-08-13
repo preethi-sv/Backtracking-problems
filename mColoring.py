@@ -1,10 +1,15 @@
+# Problem: Given adjacency matrix of a graph, check if the graph vertices 
+# can be colored with m colors. Print solution if exists.
+
+
+# Print the colors assigned
 def printSolution(solution):
     print('Assigned colors are: ', end='')
     for color in solution:
         print(color, end=' ')
 
 
-# Check if adjacent n have the chosen color
+# Check if adjacent vertices have the chosen color
 def isSafe(n, graph, vertex, color, c):
     for i in range(n):
         if graph[vertex][i] == 1 and color[i] == c:
@@ -12,8 +17,10 @@ def isSafe(n, graph, vertex, color, c):
     return True
 
 
+# Check if m colors can be sufficient to color a graph,
+# if yes assign the colors
 def graphColor(n, graph, m, color, vertex):
-    # base case: If all n are assigned a color then
+    # base case: If all n vertices are assigned a color then
     # return true
     if vertex == n:
         return True
@@ -30,14 +37,18 @@ def graphColor(n, graph, m, color, vertex):
     return False
     
 
+# Driver Function
 if __name__ == "__main__":
-    n = 4   # number of vertices
+    N = 4   # number of vertices
     # '1' indicates the n are adjacent
-    graph = [[0, 1, 1, 1], [1, 0, 1, 0], [1, 1, 0, 1], [1, 0, 1, 0]]
-    m = 4
-    color = [0] * n
-    if not graphColor(n, graph, m, color, 0):
+    Graph = [[0, 1, 1, 1],
+             [1, 0, 1, 0],
+             [1, 1, 0, 1],
+             [1, 0, 1, 0]]
+    M = 4
+    Color = [0] * N
+    if not graphColor(N, Graph, M, Color, 0):
         print('No solution')
     else:
-        printSolution(color)
+        printSolution(Color)
 
